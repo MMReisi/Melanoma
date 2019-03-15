@@ -55,7 +55,7 @@ class Run:
 
 if __name__ == '__main__':
     img = work_files.OS()
-    img = matplotlib.image.imread([i for i in img.run()][1])
+    img = matplotlib.image.imread([i for i in img.run()][0])
     obj = Run(img)
     obj.run()
     obj.show_images()
