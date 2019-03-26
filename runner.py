@@ -5,6 +5,7 @@ import find_mole
 import perimeter
 import matplotlib.image
 import compute_ratio
+import filter_perimeter
 import work_files
 import matplotlib.pyplot as plt
 import numpy as np
@@ -22,6 +23,7 @@ class Run:
         self.FindMole = find_mole.FindMole
         self.Compute = compute_ratio.Computer
         self.Perimeter = perimeter.Perimeter
+        self.Filter = filter_perimeter.FilterPerimeter
         self.p = 0
         self.s = []
         self.label = 0
@@ -46,6 +48,9 @@ class Run:
         print('|', end='', flush=True)
         self.Perimeter = perimeter.Perimeter(self.image, self.label, self.mole)
         self.p = self.Perimeter.run()
+        self.Filter = filter_perimeter.FilterPerimeter(self.p, self.image)
+        self.p = self.Filter.run()
+        print('|', end='', flush=True)
         self.perimeter = len(self.p)
         self.s = len(self.mole)
         self.Compute = compute_ratio.Computer(self.perimeter, self.s)
@@ -59,11 +64,12 @@ class Run:
         self.Median.show_image()
         self.FindMole.show_image()
         self.Perimeter.show_image()
+        self.Filter.show_image()
 
 
 if __name__ == '__main__':
     img = work_files.OS()
-    img = [i for i in img.run()][0]
+    img = [i for i in img.run()][2]
     img = matplotlib.image.imread(img)
     plt.imshow(img)
     plt.show()
