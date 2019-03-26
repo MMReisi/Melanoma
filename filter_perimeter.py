@@ -8,16 +8,20 @@ class FilterPerimeter:
         self.p = perimeter
         self.sort = []
 
+    @staticmethod
+    def min_distance(points, root):
+        d = []
+        for i in points:
+            d.append(((i[0] - root[0]) ** 2 + (i[1] - root[1]) ** 2) ** 0.5)
+        return d, min(d)
+
     def filter(self):
         p = list(self.p)
         now = p.pop()
         self.sort = [now]
         x = []
         while p:
-            d = []
-            for i in p:
-                d.append(((i[0] - now[0]) ** 2 + (i[1] - now[1]) ** 2) ** 0.5)
-            dis = min(d)
+            d, dis = self.min_distance(p, now)
             if dis > 3:
                 if len(self.sort) == 0:
                     break
@@ -26,7 +30,6 @@ class FilterPerimeter:
                 continue
             place = d.index(dis)
             self.sort.append(p[place])
-            d.pop(place)
             now = p.pop(place)
         self.sort.reverse()
         self.sort = np.array(x)
