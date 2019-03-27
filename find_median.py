@@ -17,6 +17,7 @@ class Median:
                 if self.img[i, j] == self.label:
                     self.coordinates.append([i, j])
         print('#', end='', flush=True)
+        return self
 
     def filter_and_find_median(self):
         self.coordinates = np.array(self.coordinates)
@@ -32,6 +33,7 @@ class Median:
             len_before = len(self.coordinates)
         self.median = self.coordinates.mean(axis=0).astype(int)
         print('#', end='', flush=True)
+        return self
 
     def run(self):
         self.find_coordinates()
@@ -42,6 +44,7 @@ class Median:
         plt.imshow(self.img)
         plt.scatter(self.median[1], self.median[0], c='red', s=100)
         plt.show()
+        return self
 
 
 if __name__ == '__main__':

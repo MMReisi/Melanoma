@@ -18,6 +18,7 @@ class Smooth:
             for j in range(self.w):
                 if self.img[i, j] == self.label:
                     self.coordinates.append([i, j])
+        return self
 
     def crop(self):
         x, y = zip(*self.coordinates)
@@ -25,6 +26,7 @@ class Smooth:
         self.min_x = min(x)-1
         self.max_y = max(y)+1
         self.min_y = min(y)-1
+        return self
 
     def smooth(self):
         timer = 0
@@ -53,6 +55,7 @@ class Smooth:
                             pass
                     if temp > int(self.m * base):
                         self.img[i][j] = self.label
+        return self
 
     def run(self):
         self.find_coordinates()
@@ -63,6 +66,7 @@ class Smooth:
     def show_image(self):
         plt.imshow(self.img)
         plt.show()
+        return self
 
 
 if __name__ == '__main__':

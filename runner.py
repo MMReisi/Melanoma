@@ -48,6 +48,7 @@ class Run:
         print('|', end='', flush=True)
         self.Perimeter = perimeter.Perimeter(self.image, self.label, self.mole)
         self.p = self.Perimeter.run()
+        print('|', end='', flush=True)
         self.Filter = filter_perimeter.FilterPerimeter(self.p, self.image)
         self.p = self.Filter.run()
         print('|', end='', flush=True)
@@ -57,6 +58,7 @@ class Run:
         print('|', end='', flush=True)
         self.ratio = self.Compute.run()
         print('|>')
+        return self
 
     def show_images(self):
         self.Clustering.show_image()
@@ -65,6 +67,7 @@ class Run:
         self.FindMole.show_image()
         self.Perimeter.show_image()
         self.Filter.show_image()
+        return self
 
 
 if __name__ == '__main__':

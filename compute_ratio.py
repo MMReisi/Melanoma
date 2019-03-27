@@ -9,6 +9,7 @@ class Computer:
 
     def find_r(self):
         self.r = (self.s / np.pi)**(1/2)
+        return self
 
     def run(self):
         self.find_r()

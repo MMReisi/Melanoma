@@ -32,6 +32,7 @@ class FindMole:
                         except IndexError:
                             pass
                         black.append(p)
+        return self
 
     def run(self):
         self.find_mole()
@@ -42,6 +43,7 @@ class FindMole:
         plt.imshow(self.img)
         plt.scatter(self.mole[:, 1], self.mole[:, 0], c='red')
         plt.show()
+        return self
 
 
 if __name__ == '__main__':

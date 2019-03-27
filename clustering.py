@@ -4,6 +4,7 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import work_files
 
+
 class Clustering:
     """ This class is used to cluster the pixels of the image according to their color"""
     def __init__(self, image, n_clusters=3):
@@ -15,6 +16,7 @@ class Clustering:
 
     def change_shape(self):
         self.img = self.img.reshape(self.w*self.h, 3)
+        return self
 
     def make_cluster(self):
         cls = KMeans(n_clusters=self.n)
@@ -24,6 +26,7 @@ class Clustering:
         mean = list(colors.mean(1))
         darkest = min(mean)
         self.label = mean.index(darkest)
+        return self
 
     def run(self):
         self.change_shape()
@@ -33,6 +36,7 @@ class Clustering:
     def show_image(self):
         plt.imshow(self.output_img)
         plt.show()
+        return self
 
 
 if __name__ == '__main__':

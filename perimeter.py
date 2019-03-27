@@ -39,8 +39,10 @@ class Perimeter:
             if self.img[x+1][y] != self.label:
                 self.p.append([x, y])
                 continue
+        return self
 
     def show_image(self):
         plt.imshow(self.img)
         plt.scatter(self.p[:, 1], self.p[:, 0], s=5, c='red')
         plt.show()
+        return self

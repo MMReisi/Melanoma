@@ -8,6 +8,7 @@ class OS:
 
     def read_images(self):
         self.images = os.listdir(os.getcwd())
+        return self
 
     def run(self):
         self.read_images()

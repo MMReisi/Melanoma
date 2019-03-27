@@ -33,11 +33,13 @@ class FilterPerimeter:
             now = p.pop(place)
         self.sort.reverse()
         self.sort = np.array(x)
+        return self
 
     def show_image(self):
         plt.imshow(self.img)
         plt.scatter(self.sort[:, 1], self.sort[:, 0], c='red', s=4)
         plt.show()
+        return self
 
     def run(self):
         self.filter()
