@@ -35,8 +35,10 @@ class FilterPerimeter:
         self.sort = np.array(x)
         return self
 
-    def show_image(self):
-        plt.imshow(self.img)
+    def show_image(self, image=0):
+        if type(image) == type(int):
+            image = self.img
+        plt.imshow(image)
         plt.scatter(self.sort[:, 1], self.sort[:, 0], c='red', s=4)
         plt.show()
         return self

@@ -41,8 +41,10 @@ class Perimeter:
                 continue
         return self
 
-    def show_image(self):
-        plt.imshow(self.img)
+    def show_image(self, image=0):
+        if type(image) == type(int):
+            image = self.img
+        plt.imshow(image)
         plt.scatter(self.p[:, 1], self.p[:, 0], s=5, c='red')
         plt.show()
         return self

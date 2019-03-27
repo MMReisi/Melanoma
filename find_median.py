@@ -40,8 +40,10 @@ class Median:
         self.filter_and_find_median()
         return self.median
 
-    def show_image(self):
-        plt.imshow(self.img)
+    def show_image(self, image=0):
+        if type(image) == type(int):
+            image = self.img
+        plt.imshow(image)
         plt.scatter(self.median[1], self.median[0], c='red', s=100)
         plt.show()
         return self

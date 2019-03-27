@@ -39,8 +39,11 @@ class FindMole:
         self.mole = np.array(self.mole)
         return self.mole
 
-    def show_image(self):
-        plt.imshow(self.img)
+    def show_image(self, image=0):
+        if type(image) == type(int):
+            image = self.img
+
+        plt.imshow(image)
         plt.scatter(self.mole[:, 1], self.mole[:, 0], c='red')
         plt.show()
         return self

@@ -17,6 +17,7 @@ class Run:
         self.m_s = m_s
         self.n_cluster = n_cluster
         self.image = image
+        self.raw_image = image.copy()
         self.Clustering = clustering.Clustering
         self.Smooth = smoothing.Smooth
         self.Median = find_median.Median
@@ -63,10 +64,10 @@ class Run:
     def show_images(self):
         self.Clustering.show_image()
         self.Smooth.show_image()
-        self.Median.show_image()
-        self.FindMole.show_image()
-        self.Perimeter.show_image()
-        self.Filter.show_image()
+        self.Median.show_image(self.raw_image)
+        self.FindMole.show_image(self.raw_image)
+        self.Perimeter.show_image(self.raw_image)
+        self.Filter.show_image(self.raw_image)
         return self
 
 
