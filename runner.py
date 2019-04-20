@@ -72,8 +72,12 @@ class Run:
 
 
 if __name__ == '__main__':
-    img = work_files.OS()
-    img = [i for i in img.run()][2]
+    imgs = work_files.OS()
+    imgs = [i for i in imgs.run()]
+    img = input('Enter the name of picture \nfor example \'low_risk_2.jpg\' : ')
+    if img not in imgs:
+        print(' I can\'t find this image make sure about spelling')
+        exit()
     img = matplotlib.image.imread(img)
     plt.imshow(img)
     plt.show()
