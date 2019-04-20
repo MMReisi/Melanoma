@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 
 
 class FilterPerimeter:
-    def __init__(self, perimeter, image=None):
+    def __init__(self, perimeter, image=None, min_distance=3):
+        self.m_d = min_distance
         self.img = image
         self.p = perimeter
         self.sort = []
@@ -22,7 +23,7 @@ class FilterPerimeter:
         x = []
         while p:
             d, dis = self.min_distance(p, now)
-            if dis > 3:
+            if dis > self.m_d:
                 if len(self.sort) == 0:
                     break
                 now = self.sort.pop()
